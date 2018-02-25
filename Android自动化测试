@@ -1,0 +1,66 @@
+
+Android自动化测试学习
+https://developer.android.google.cn/index.html
+http://www.open-open.com/lib/view/open1453359776198.html
+https://segmentfault.com/a/1190000004338384
+Android测试
+http://blog.csdn.net/zrbcsdn/article/details/51306370
+http://www.oschina.net/question/54100_27061
+Monkey测试
+https://www.cnblogs.com/ITGirl00/p/4141277.html
+对于Android测试比较好的总结
+https://www.jianshu.com/p/cb06c4be07fa
+
+JUnit 是单元测试框架。Mockito 与 JUnit 不同，并不是单元测试框架（这方面 JUnit 已经足够好了），
+它是用于生成模拟对象或者直接点说，就是”假对象“的工具。两者定位不同，所以一般通常的做法就是联合
+JUnit + Mockito 来进行测试。
+
+Android测试分为两种
+1. 单元测试
+2. InstrumentTest
+InstrumentTest又有两种常见的框架
+1. Espresso
+2. UiAutomator
+
+Android程序员必须掌握的三种测试方法
+http://www.open-open.com/lib/view/open1452002658792.html
+
+ADB命令学习
+http://www.cnblogs.com/ITGirl00/p/4148182.html
+
+测试方法一: Monkey 测试
+adb logcat>c:/log.txt // 将log日志输出到log.txt文件中
+1. adb shell monkey -p com.xx.xx -v 100  // Monkey压力测试100次
+2. adb -s emulator-5556 shell monkey -p 包名 --ignore-crashes
+   --ignore-timeouts --ignore-native-crashes --pct-touch 30 -s 1 -v -v --throttle 200 100000 2
+   logcat >C:/error.txt 1 logcat>C:/log.txt
+
+思考1：怎么让monkey在机子上点击快点
+一、解释这个和手机的性能有关系，有的手机质量好，几个小时就能弄完，但有的需要十几个小时，这个好像只有等着了，在进行测试的时候有时候就卡在那里了，你可以手动帮忙让手机动起来
+
+思考2：出现“** System appears to have crashed at event 7487 of 10000 using seed 1437074235484”怎么办？
+原来的测试语句是：
+adb -s emulator-5554 shell monkey -p com.soft0754.android.tonze 10000
+
+出现“** System appears to have crashed at event 7487 of 10000 using seed 1437074235484”的错误，
+证明系统在10000个操作的第7487个操作里出现了异常，用的种子是1437074235484。1437074235484就是伪随机数的种子。
+
+我们下次想用相同的操作序列再现这个异常，只需要使用下面的测试语句：
+adb -s emulator-5554 shell monkey -p com.soft0754.android.tonze -s 1437074235484 10000
+
+但是操作的页面需要相同，否则达不到相同的效果。但是，如果相同操作起点也就是相同的操作页面执行命令无法重新之前的BUG，就证明程序存在不稳定的因素。
+
+测试方法二:
+MonkeyRunner
+http://blog.csdn.net/liu_jing_hui/article/category/6774618
+
+测试方法三：
+Espressor
+
+测试方法四:
+UiAutomator
+比较好的介绍
+1. http://blog.csdn.net/java18/article/details/53535928###;
+2. https://www.jianshu.com/p/c900efe8c982
+
+

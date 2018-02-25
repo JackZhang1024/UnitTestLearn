@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.lucky.unittestlearn">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".SecondActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".ThirdActivity"/>
+        <activity android:name=".autoinstrumenttest.AppStartActivity"/>
+        <activity android:name=".autoinstrumenttest.EspressoTestActivity"/>
+        <activity android:name=".autoinstrumenttest.AdapterViewActivity"/>
+        <activity android:name=".uiautomatortest.UiAutomatorActivity"/>
+        <activity android:name=".autoinstrumenttest.WebViewEspressoActivity"/>
+        <activity android:name=".autoinstrumenttest.LoadLocalDataActivity"/>
+    </application>
+
+</manifest>
